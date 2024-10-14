@@ -47,12 +47,6 @@ root.resizable(False, False)
 frame = tk.Frame(root, bg="#ff7f00")
 frame.pack(padx=20, pady=10, fill=tk.BOTH, expand=True)
 
-logo_img = Image.open("logo.png")
-logo_img = logo_img.resize((150, 150), Image.ANTIALIAS)
-logo_img = ImageTk.PhotoImage(logo_img)
-logo_label = tk.Label(frame, image=logo_img, bg="#ff7f00")
-logo_label.grid(row=0, column=1, pady=10)
-
 tk.Label(frame, text="Nombre", bg="#ff7f00", fg="white").grid(row=1, column=0, sticky="e", padx=10, pady=5)
 entry_nombre = tk.Entry(frame, width=30)
 entry_nombre.grid(row=1, column=1, pady=5)
@@ -101,10 +95,13 @@ carnet_img_label.grid(row=5, column=2, padx=10, pady=5)
 
 tk.Button(frame, text="Subir", command=lambda: cargar_imagen(carnet_img_label), bg="grey").grid(row=6, column=2, padx=10, pady=5)
 
-cancelar_btn = tk.Button(frame, text="Cancelar", bg="red", fg="white", width=10, command=root.quit)
-cancelar_btn.grid(row=9, column=0, pady=20)
+button_frame = tk.Frame(frame, bg="#ff7f00")
+button_frame.grid(row=9, column=1, pady=20, columnspan=2)
 
-guardar_btn = tk.Button(frame, text="Guardar", bg="green", fg="white", width=10, command=validar_campos)
-guardar_btn.grid(row=9, column=1, pady=20)
+cancelar_btn = tk.Button(button_frame, text="Cancelar", bg="red", fg="white", width=10, command=root.quit)
+cancelar_btn.grid(row=0, column=0, padx=10)
+
+guardar_btn = tk.Button(button_frame, text="Guardar", bg="green", fg="white", width=10, command=validar_campos)
+guardar_btn.grid(row=0, column=1, padx=10)
 
 root.mainloop()
